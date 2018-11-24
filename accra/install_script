@@ -5,13 +5,19 @@
 #    / /_/ / __  // / ___/ / __/ 
 #   /_____/_/ /_/___//____/____/
 #
-#   Installation stackscript
+#   Installation stackscript 
 #
 #<UDF name="myuser" label="Username:">
 #<UDF name="ssh" label="SSH Public Key:">
 #<UDF name="sshport" label="SSH Port:" default="22">
 #<UDF name="hostname" label="The hostname for the new Linode.">
 #<UDF name="fqdn" label="The new Linode's Fully Qualified Domain Name">
+
+MYUSER='dhis'
+SSH='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDHrgFKeY5j4u3tfm5WD8r1SBUa8VZp5xs0w5cbPZ9PGKVKL9smTdS5gtICqr2WTriTC1Hjla71u8who03Wktypy4yYTFwzNd0lKhcrw9hdwhY9Qmgx7OLGs9n+hTT/w9+hTADGIAeSawtlrt0NMWI9l7PYpicPW2ye2OsvxOy2AB+iOeYOYxAGgPVg/WmnoD60lTCEBMUY6H/KHTe8T+YFy6jcoaq5ELLoc/Wlu83tRUG0X0gtldbY7k6vcXOfTvJ1SB5V5fC2wftHZ6iob3GPb8y4GbkzZZ5UMX53Ci+/lgE0p4gZEM5f8KBKS2qGB3+jzZmkop6X0s6imZeblAkz imported-openssh-key'
+SSHPORT='22'
+HOSTNAME='dhis03'
+FQDN='dhis03.westeurope.cloudapp.azure.com'
 
 # enable firewall
 ufw enable
@@ -81,7 +87,10 @@ echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | su
 apt-get -y install oracle-java8-installer
 apt-get -y install dhis2-tools
 
-apt-get -y install postgresql apache2
-apt-get -y install python-certbot-apache 
+apt-get -y install postgresql 
+apt install postgresql-10-postgis-2.4
+apt install postgresql-10-postgis-2.4-scripts
+#apt-get -y install apache2
+#apt-get -y install python-certbot-apache 
 
-a2enmod ssl cache rewrite proxy_http headers
+#a2enmod ssl cache rewrite proxy_http headers
